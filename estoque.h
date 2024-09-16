@@ -2,16 +2,32 @@ typedef struct medicamento Medicamento;
 
 typedef struct arvore Arvore;
 
-Medicamento* CriaMedicamento(Arvove* a, Medicamento* m);
+// Inicializar o programa
+void menu();
 
+// Cria a árvore
 Arvore* CriaArvore();
 
-Arvore* InsereArvoreMedicamento(Arvore* a, Medicamento* m);
+// Cria um medicamento
+Medicamento* CriaMedicamento(char* nome , int codigo , float valor , int* data_de_validade);
 
-Arvore* RetiraArvoreMedicamento(Arvore* a, int id_medicamento);
+// Insere um medicamento na árvore
+Arvore* InsereArvoreMedicamento(FILE* fp, Arvore* arv, Medicamento* );
 
-int VerificaArvoreMedicamento(Arvore* a, int id_medicamento);
+// Retira o medicamento da árvore
+Arvore* RetiraArvoreMedicamento(FILE* fp, Arvore* arv, int id_medicamento);
 
-int VerificaArvoreValidade(Arvore* a, int* data);
+// Atualizar o preço do produto
+Arvore* AtualizaPreco (FILE *fp, Arvore *arv, int id_medicamento, float preco); 
 
-void imprimeArvoreMedicamentos(Arvore* a);
+// Verifica se há o medicamento determinado
+int VerificaArvoreMedicamento(FILE* fp, Arvore* arv, int id_medicamento);
+
+// Verifica a validade do medicamento
+void VerificaArvoreValidade(FILE* fp, Arvore* arv, int* data, int* validade);
+
+// Imprime em ordem todos os medicamento
+void imprimeArvoreMedicamentos(FILE* fp, Arvore* arv);
+
+/* libera memoria */
+void fim(Arvore *arv);
